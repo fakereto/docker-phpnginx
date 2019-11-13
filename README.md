@@ -5,7 +5,7 @@ Hi, this repo, extend the docker-phpfpm image with nginx a and supervisor
 
 WORKDIR /var/www/app/
 
-PHP Version: 7.1-fpm with unix sockets
+PHP Version: 7.3-fpm with unix sockets
 Nginx Version: 10.X
 Supervisor for process management
 
