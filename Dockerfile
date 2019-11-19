@@ -29,7 +29,6 @@ COPY ./supervisord.conf /etc/supervisor/conf.d/
 COPY ./app /var/www/app/
 
 COPY ./configs/nginx.conf ${NGINX_CONF_DIR}/nginx.conf
-COPY ./configs/custom_load.conf ${NGINX_CONF_DIR}/conf.d/custom_load.conf
 COPY ./configs/app.conf ${NGINX_CONF_DIR}/sites-enabled/app.conf
 
 RUN chown www-data:www-data /var/www/app/ -Rf
@@ -38,5 +37,6 @@ WORKDIR /var/www/app/
 VOLUME /var/www/app/
 
 EXPOSE 80 443
-
-CMD ["/usr/bin/supervisord"]
+ENV ENV_SERVER_NAME=local.app.com
+COPY entrypoint.sh /var/www/
+ENTRYPOINT ["/var/www/entrypoint.sh"]
