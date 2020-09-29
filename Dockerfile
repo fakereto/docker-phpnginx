@@ -12,8 +12,8 @@ ENV OS_LOCALE="en_US.UTF-8" \
 	SUPERVISOR_LOG_DIR=/var/log/supervisor \
 	ENV_SERVER_NAME=local.app.com
 
-ENV NGINX_VERSION	1.14.* \
- 	SUPERVISOR_VERSION	3.3.*
+ENV NGINX_VERSION=1.14.* \
+ 	SUPERVISOR_VERSION=3.3.*
 
 RUN	\
 	BUILD_DEPS='software-properties-common wget gnupg' \
