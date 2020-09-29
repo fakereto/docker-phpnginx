@@ -1,4 +1,4 @@
-FROM fakereto/docker-phpfpm:7.3
+FROM fakereto/phpfpm:7.3
 LABEL maintainer="Andres Vejar <andresvejar@neubox.net>"
 
 ENV OS_LOCALE="en_US.UTF-8" \
