@@ -22,7 +22,9 @@ RUN	\
 	&& apt-get install -y nginx=$NGINX_VERSION nginx-extras=$NGINX_VERSION \
 	&& rm -rf ${NGINX_CONF_DIR}/sites-enabled/* ${NGINX_CONF_DIR}/sites-available/* \
 	# Install supervisor
-	&& apt-get install -y supervisor=${SUPERVISOR_VERSION} && mkdir -p $SUPERVISOR_LOG_DIR
+	&& apt-get install -y supervisor=${SUPERVISOR_VERSION} && mkdir -p $SUPERVISOR_LOG_DIR \
+	&& apt-get install -y ca-certificates \
+		openssh-client
 
 	# Cleaning
 RUN apt-get clean \
