@@ -1,5 +1,5 @@
-FROM fakereto/phpfpm:7.3
-LABEL maintainer="Andres Vejar <andresvejar@neubox.net>"
+FROM neubox/phpfpm:1.0.2
+LABEL maintainer="Andres Vejar <fakereto@gmail.com>"
 
 ENV OS_LOCALE="en_US.UTF-8" \
     DEBIAN_FRONTEND=noninteractive \
@@ -22,7 +22,7 @@ RUN	\
 	&& apt-get install -y nginx=$NGINX_VERSION nginx-extras=$NGINX_VERSION \
 	&& rm -rf ${NGINX_CONF_DIR}/sites-enabled/* ${NGINX_CONF_DIR}/sites-available/* \
 	# Install supervisor
-	&& apt-get install -y supervisor=${SUPERVISOR_VERSION} && mkdir -p $SUPERVISOR_LOG_DIR
+	&& apt-get install -y supervisor=${SUPERVISOR_VERSION} rsync && mkdir -p $SUPERVISOR_LOG_DIR
 
 	# Cleaning
 RUN apt-get clean \
@@ -50,4 +50,4 @@ WORKDIR /var/www/
 HEALTHCHECK --interval=5s --timeout=3s \
   CMD curl -f http://localhost/ping || exit 1
 
-CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
