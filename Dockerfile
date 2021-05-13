@@ -1,4 +1,4 @@
-FROM fakereto/phpfpm:1.0.2
+FROM fakereto/phpfpm:latest
 LABEL maintainer="Andres Vejar <fakereto@gmail.com>"
 
 ENV OS_LOCALE="en_US.UTF-8" \
